@@ -62,7 +62,7 @@ public class MainViewController implements Initializable {
         // TODO
     }
 
-    private void carregaView(String nomeAbsoluto) {
+    private synchronized void carregaView(String nomeAbsoluto) {
         try {
             FXMLLoader loader = new FXMLLoader(App.class.getResource(nomeAbsoluto + ".fxml"));
             VBox newVbox = loader.load();
