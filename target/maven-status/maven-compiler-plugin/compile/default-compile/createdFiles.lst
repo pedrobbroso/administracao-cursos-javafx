@@ -1,1 +1,5 @@
+gui\util\Constraints.class
 br\com\fatec\App.class
+br\com\fatec\controller\CursosListController.class
+br\com\fatec\controller\MainViewController.class
+gui\util\Alerts.class

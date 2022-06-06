@@ -39,7 +39,7 @@ public class MainViewController implements Initializable {
     private MenuItem menuItemAbout;
 
     public void onMenuItemCursoAction() {
-        System.out.println("onMenuItemCursoAction");
+        carregaView("CursosList");
     }
 
     public void onMenuItemInstrutorAction() {
