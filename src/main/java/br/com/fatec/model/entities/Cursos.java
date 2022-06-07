@@ -19,7 +19,7 @@ public class Cursos {
     public Cursos() {
     }
 
-    public Cursos(Integer id, String name) {
+    public Cursos(Integer id, String nome, String categoria) {
         this.id = id;
         this.nome = nome;
         this.categoria = categoria;
@@ -33,11 +33,11 @@ public class Cursos {
         this.id = id;
     }
 
-    public String getName() {
+    public String getNome() {
         return nome;
     }
 
-    public void setName(String name) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 

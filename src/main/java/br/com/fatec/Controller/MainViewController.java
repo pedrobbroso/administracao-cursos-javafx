@@ -5,6 +5,8 @@
 package br.com.fatec.controller;
 
 import br.com.fatec.App;
+import br.com.fatec.Controller.CursosListController;
+import br.com.fatec.model.services.CursosService;
 import gui.util.Alerts;
 import java.io.IOException;
 import java.net.URL;
@@ -39,9 +41,9 @@ public class MainViewController implements Initializable {
     private MenuItem menuItemAbout;
 
     public void onMenuItemCursoAction() {
-        carregaView("CursosList");
+        carregaView2("CursosList");
     }
-
+    
     public void onMenuItemInstrutorAction() {
         System.out.println("onMenuItemInstrutorAction");
     }
@@ -66,6 +68,7 @@ public class MainViewController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(App.class.getResource(nomeAbsoluto + ".fxml"));
             VBox newVbox = loader.load();
+            
             Scene scene = App.getScene();
             VBox mainVBox = (VBox) ((ScrollPane) scene.getRoot()).getContent();
             
@@ -73,6 +76,27 @@ public class MainViewController implements Initializable {
             mainVBox.getChildren().clear();
             mainVBox.getChildren().add(mainMenu);
             mainVBox.getChildren().addAll(newVbox.getChildren());
+        } catch (IOException e) {
+            Alerts.showAlert("IO Exception", "Error ao carregar a view", e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+    
+    private synchronized void carregaView2(String nomeAbsoluto) {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource(nomeAbsoluto + ".fxml"));
+            VBox newVbox = loader.load();
+            
+            Scene scene = App.getScene();
+            VBox mainVBox = (VBox) ((ScrollPane) scene.getRoot()).getContent();
+            
+            Node mainMenu = mainVBox.getChildren().get(0);
+            mainVBox.getChildren().clear();
+            mainVBox.getChildren().add(mainMenu);
+            mainVBox.getChildren().addAll(newVbox.getChildren());
+            
+            CursosListController cursosListController = loader.getController();
+            cursosListController.setCursosService(new CursosService());
+            cursosListController.updateTableView();
         } catch (IOException e) {
             Alerts.showAlert("IO Exception", "Error ao carregar a view", e.getMessage(), Alert.AlertType.ERROR);
         }

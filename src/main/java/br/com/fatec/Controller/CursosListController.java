@@ -6,8 +6,12 @@ package br.com.fatec.Controller;
 
 import br.com.fatec.App;
 import br.com.fatec.model.entities.Cursos;
+import br.com.fatec.model.services.CursosService;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -22,6 +26,8 @@ import javafx.stage.Stage;
  * @author pedro
  */
 public class CursosListController implements Initializable {
+    
+    private CursosService cursosService;
     
     @FXML
     private TableView<Cursos> tableViewCursos;
@@ -38,9 +44,15 @@ public class CursosListController implements Initializable {
     @FXML
     private Button btNew;
     
+    private ObservableList<Cursos> observableList;
+    
     @FXML
     public void onBtNewAction() {
         System.out.println("onBtNewAction");
+    }
+    
+    public void setCursosService(CursosService cursosService) {
+        this.cursosService = cursosService;
     }
 
     /**
@@ -58,6 +70,15 @@ public class CursosListController implements Initializable {
         
         Stage stage = (Stage) App.getScene().getWindow();
         tableViewCursos.prefHeightProperty().bind(stage.heightProperty());
+    }
+    
+    public void updateTableView() {
+        if (cursosService == null) {
+            throw new IllegalStateException("CursosService está nulo");
+        }
+        List<Cursos> list = cursosService.findAll();
+        observableList = FXCollections.observableArrayList(list);
+        tableViewCursos.setItems(observableList);
     }
     
 }
