@@ -1,7 +1,13 @@
+C:\N2_Java\Cadastro-JavaFX\src\main\java\br\com\fatec\db\DB.java
 C:\N2_Java\Cadastro-JavaFX\src\main\java\gui\util\Constraints.java
+C:\N2_Java\Cadastro-JavaFX\src\main\java\br\com\fatec\model\dao\CursosDao.java
 C:\N2_Java\Cadastro-JavaFX\src\main\java\br\com\fatec\model\services\CursosService.java
 C:\N2_Java\Cadastro-JavaFX\src\main\java\br\com\fatec\App.java
-C:\N2_Java\Cadastro-JavaFX\src\main\java\br\com\fatec\Controller\MainViewController.java
+C:\N2_Java\Cadastro-JavaFX\src\main\java\br\com\fatec\model\dao\DAO.java
 C:\N2_Java\Cadastro-JavaFX\src\main\java\gui\util\Alerts.java
+C:\N2_Java\Cadastro-JavaFX\src\main\java\br\com\fatec\db\DbException.java
+C:\N2_Java\Cadastro-JavaFX\src\main\java\br\com\fatec\db\DbIntegrityException.java
+C:\N2_Java\Cadastro-JavaFX\src\main\java\br\com\fatec\Controller\MainViewController.java
 C:\N2_Java\Cadastro-JavaFX\src\main\java\br\com\fatec\Controller\CursosListController.java
 C:\N2_Java\Cadastro-JavaFX\src\main\java\br\com\fatec\model\entities\Cursos.java
+C:\N2_Java\Cadastro-JavaFX\src\main\java\br\com\fatec\model\persistencia\Banco.java

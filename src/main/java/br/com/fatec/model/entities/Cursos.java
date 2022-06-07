@@ -16,15 +16,18 @@ public class Cursos {
     private String nome;
     private String categoria;
 
+    //default constructor
     public Cursos() {
     }
 
+    //constructor
     public Cursos(Integer id, String nome, String categoria) {
         this.id = id;
         this.nome = nome;
         this.categoria = categoria;
     }
 
+    //getters e setters
     public Integer getId() {
         return id;
     }

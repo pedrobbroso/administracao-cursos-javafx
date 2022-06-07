@@ -11,6 +11,7 @@ import gui.util.Alerts;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -41,7 +42,10 @@ public class MainViewController implements Initializable {
     private MenuItem menuItemAbout;
 
     public void onMenuItemCursoAction() {
-        carregaView2("CursosList");
+        carregaView("CursosList", (CursosListController cursosListController) -> {
+            cursosListController.setCursosService(new CursosService());
+            cursosListController.updateTableView();
+        });
     }
     
     public void onMenuItemInstrutorAction() {
@@ -53,7 +57,7 @@ public class MainViewController implements Initializable {
     }
 
     public void onMenuItemAboutAction() {
-        carregaView("about");
+        carregaView("about", x -> {});
     }
 
     /**
@@ -64,24 +68,7 @@ public class MainViewController implements Initializable {
         // TODO
     }
 
-    private synchronized void carregaView(String nomeAbsoluto) {
-        try {
-            FXMLLoader loader = new FXMLLoader(App.class.getResource(nomeAbsoluto + ".fxml"));
-            VBox newVbox = loader.load();
-            
-            Scene scene = App.getScene();
-            VBox mainVBox = (VBox) ((ScrollPane) scene.getRoot()).getContent();
-            
-            Node mainMenu = mainVBox.getChildren().get(0);
-            mainVBox.getChildren().clear();
-            mainVBox.getChildren().add(mainMenu);
-            mainVBox.getChildren().addAll(newVbox.getChildren());
-        } catch (IOException e) {
-            Alerts.showAlert("IO Exception", "Error ao carregar a view", e.getMessage(), Alert.AlertType.ERROR);
-        }
-    }
-    
-    private synchronized void carregaView2(String nomeAbsoluto) {
+    private synchronized <T> void carregaView(String nomeAbsoluto, Consumer<T> initializingAction) {
         try {
             FXMLLoader loader = new FXMLLoader(App.class.getResource(nomeAbsoluto + ".fxml"));
             VBox newVbox = loader.load();
@@ -94,11 +81,15 @@ public class MainViewController implements Initializable {
             mainVBox.getChildren().add(mainMenu);
             mainVBox.getChildren().addAll(newVbox.getChildren());
             
-            CursosListController cursosListController = loader.getController();
-            cursosListController.setCursosService(new CursosService());
-            cursosListController.updateTableView();
+            T controller = loader.getController();
+            initializingAction.accept(controller);
         } catch (IOException e) {
             Alerts.showAlert("IO Exception", "Error ao carregar a view", e.getMessage(), Alert.AlertType.ERROR);
         }
     }
+    /*
+    CursosListController cursosListController = loader.getController();
+    cursosListController.setCursosService(new CursosService());
+    cursosListController.updateTableView();
+    */
 }
