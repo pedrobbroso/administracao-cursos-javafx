@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox prefHeight="370.0" prefWidth="473.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="br.com.fatec.Controller.CursosListController">
+<VBox prefHeight="370.0" prefWidth="473.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.CursosListController">
    <children>
       <Label prefHeight="35.0" prefWidth="165.0" text="Registro de Cursos">
          <font>
@@ -18,14 +17,14 @@
       </Label>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
         <items>
-          <Button mnemonicParsing="false" text="Cadastrar" />
+          <Button fx:id="btNew" mnemonicParsing="false" onAction="#onBtNewAction" text="Cadastrar" />
         </items>
       </ToolBar>
-      <TableView prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="tableViewCursos" prefHeight="200.0" prefWidth="200.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="ID" />
-          <TableColumn prefWidth="121.0" text="Nome do Curso" />
-            <TableColumn prefWidth="86.0" text="Área" />
+          <TableColumn fx:id="tableColumnId" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="tableColumnNome" prefWidth="121.0" text="Nome do Curso" />
+            <TableColumn fx:id="tableColumnCategoria" prefWidth="75.0" text="Categoria" />
         </columns>
       </TableView>
    </children>
