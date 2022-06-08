@@ -4,27 +4,29 @@
  */
 package br.com.fatec.model.entities;
 
+import br.com.fatec.model.entities.Instrutores;
+import br.com.fatec.model.entities.Cursos;
 /**
  *
- * @author pedro
+ * @author rafael
  */
-public class Cursos {
-
-    private static final long serialVersionUID = 1L;
+public class Turmas {
 
     private Integer id;
-    private String nome;
-    private String categoria;
-
+    private String periodo;
+    private String sala;
+    private Cursos curso;
+    private Instrutores instrutor;
+    
     //default constructor
-    public Cursos() {
+    public Turmas() {
     }
 
     //constructor
-    public Cursos(Integer id, String nome, String categoria) {
+    public Turmas(Integer id, String periodo, String sala) {
         this.id = id;
-        this.nome = nome;
-        this.categoria = categoria;
+        this.periodo = periodo;
+        this.sala = sala;
     }
 
     //getters e setters
@@ -36,21 +38,39 @@ public class Cursos {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getPeriodo() {
+        return periodo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public String getSala() {
+        return sala;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setSala(String sala) {
+        this.sala = sala;
     }
+
+    public Cursos getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Cursos curso) {
+        this.curso = curso;
+    }
+
+    public Instrutores getInstrutor() {
+        return instrutor;
+    }
+
+    public void setInstrutor(Instrutores instrutor) {
+        this.instrutor = instrutor;
+    }
+
+    
 
     @Override
     public int hashCode() {
@@ -71,7 +91,7 @@ public class Cursos {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        Cursos other = (Cursos) obj;
+        Turmas other = (Turmas) obj;
         if (id == null) {
             if (other.id != null) {
                 return false;
@@ -84,6 +104,6 @@ public class Cursos {
 
     @Override
     public String toString() {
-        return "Cursos [id=" + id + ", nome=" + nome + ", categoria=" + categoria + "]";
+        return id + " - " + curso.getNome() + " - " + periodo + ", sala=" + sala;
     }
 }

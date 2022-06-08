@@ -21,7 +21,7 @@ public interface DAO <MODEL> {
             throws SQLException;
     public boolean altera(MODEL obj) 
             throws SQLException;
-    public MODEL buscaID(MODEL obj) 
+    public MODEL busca(MODEL obj) 
             throws SQLException;
     public Collection<MODEL> lista(String criterio) 
             throws SQLException;    

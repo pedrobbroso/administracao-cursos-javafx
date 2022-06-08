@@ -33,7 +33,7 @@ public class Banco {
     //métodos
     public static void conectar() throws SQLException {
         //mysql
-        String url = "jdbc:mysql://" + servidor +
+        String url = "jdbc:mariadb://" + servidor +
                      ":" + porta + "/" + bancoDados;
 
         conexao = DriverManager.getConnection(url, usuario, senha);

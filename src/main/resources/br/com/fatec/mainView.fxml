@@ -8,11 +8,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-
-<ScrollPane maxHeight="-Infinity" fitToHeight="true" fitToWidth="true" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.controller.MainViewController">
+<ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="584.0" prefWidth="868.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.controller.MainViewController">
     <content>
-      <VBox prefHeight="399.0" prefWidth="599.0">
+      <VBox prefHeight="572.0" prefWidth="866.0">
          <children>
             <MenuBar>
               <menus>

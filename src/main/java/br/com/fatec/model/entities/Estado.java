@@ -8,23 +8,21 @@ package br.com.fatec.model.entities;
  *
  * @author pedro
  */
-public class Cursos {
-
-    private static final long serialVersionUID = 1L;
+public class Estado {
 
     private Integer id;
-    private String nome;
-    private String categoria;
+    private String estado;
+    private String uf;
 
     //default constructor
-    public Cursos() {
+    public Estado() {
     }
 
     //constructor
-    public Cursos(Integer id, String nome, String categoria) {
+    public Estado(Integer id, String estado, String uf) {
         this.id = id;
-        this.nome = nome;
-        this.categoria = categoria;
+        this.estado = estado;
+        this.uf = uf;
     }
 
     //getters e setters
@@ -36,20 +34,20 @@ public class Cursos {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public String getUf() {
+        return uf;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 
     @Override
@@ -71,7 +69,7 @@ public class Cursos {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        Cursos other = (Cursos) obj;
+        Estado other = (Estado) obj;
         if (id == null) {
             if (other.id != null) {
                 return false;
@@ -84,6 +82,6 @@ public class Cursos {
 
     @Override
     public String toString() {
-        return "Cursos [id=" + id + ", nome=" + nome + ", categoria=" + categoria + "]";
+        return  id + " - " + estado + " - " + uf ;
     }
 }

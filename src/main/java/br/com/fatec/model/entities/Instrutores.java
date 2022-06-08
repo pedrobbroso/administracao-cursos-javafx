@@ -4,27 +4,33 @@
  */
 package br.com.fatec.model.entities;
 
+import br.com.fatec.model.entities.Estado;
+import br.com.fatec.model.entities.Cursos;
+import java.time.LocalDate;
 /**
  *
- * @author pedro
+ * @author rafael
  */
-public class Cursos {
-
-    private static final long serialVersionUID = 1L;
+public class Instrutores {
 
     private Integer id;
     private String nome;
-    private String categoria;
+    private String email;
+    private LocalDate nascimento;
+    private String graduacao;
+    private String faculdade;
+    private Cursos curso;
+    private Estado estado;
 
     //default constructor
-    public Cursos() {
+    public Instrutores() {
     }
 
     //constructor
-    public Cursos(Integer id, String nome, String categoria) {
+    public Instrutores(Integer id, String nome, String email) {
         this.id = id;
         this.nome = nome;
-        this.categoria = categoria;
+        this.email = email;
     }
 
     //getters e setters
@@ -44,13 +50,54 @@ public class Cursos {
         this.nome = nome;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setEmail(String email) {
+        this.email = email;
     }
+
+    public LocalDate getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(LocalDate nascimento) {
+        this.nascimento = nascimento;
+    }
+
+    public String getGraduacao() {
+        return graduacao;
+    }
+
+    public void setGraduacao(String graduacao) {
+        this.graduacao = graduacao;
+    }
+
+    public String getFaculdade() {
+        return faculdade;
+    }
+
+    public void setFaculdade(String faculdade) {
+        this.faculdade = faculdade;
+    }
+
+    public Cursos getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Cursos curso) {
+        this.curso = curso;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+    
 
     @Override
     public int hashCode() {
@@ -71,7 +118,7 @@ public class Cursos {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        Cursos other = (Cursos) obj;
+        Instrutores other = (Instrutores) obj;
         if (id == null) {
             if (other.id != null) {
                 return false;
@@ -84,6 +131,6 @@ public class Cursos {
 
     @Override
     public String toString() {
-        return "Cursos [id=" + id + ", nome=" + nome + ", categoria=" + categoria + "]";
+        return id + " - " + nome ;
     }
 }

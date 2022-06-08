@@ -6,7 +6,8 @@ package br.com.fatec.controller;
 
 import br.com.fatec.App;
 import br.com.fatec.Controller.CursosListController;
-import br.com.fatec.model.services.CursosService;
+import br.com.fatec.Controller.InstrutoresListController;
+import br.com.fatec.Controller.TurmasListController;
 import gui.util.Alerts;
 import java.io.IOException;
 import java.net.URL;
@@ -43,17 +44,22 @@ public class MainViewController implements Initializable {
 
     public void onMenuItemCursoAction() {
         carregaView("CursosList", (CursosListController cursosListController) -> {
-            cursosListController.setCursosService(new CursosService());
             cursosListController.updateTableView();
         });
     }
     
     public void onMenuItemInstrutorAction() {
         System.out.println("onMenuItemInstrutorAction");
+        carregaView("InstrutoresList", (InstrutoresListController intrutoresListController) -> {
+            intrutoresListController.updateTableView();
+        });
     }
 
     public void onMenuItemTurmaAction() {
         System.out.println("onMenuItemTurmaAction");
+        carregaView("TurmasList", (TurmasListController turmasListController) -> {
+            turmasListController.updateTableView();
+        });
     }
 
     public void onMenuItemAboutAction() {

@@ -5,9 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import javafx.scene.image.Image;
 import java.io.IOException;
-import javafx.scene.control.ScrollPane;
 
 /**
  * JavaFX App
@@ -20,6 +19,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("mainView"));
         stage.setScene(scene);
+        //stage.getIcons().add(new Image(this.getClass().getResource("resources/images/cap.png").getFile()));
         stage.setTitle("Cadastro de Cursos");
         stage.show();
     }
