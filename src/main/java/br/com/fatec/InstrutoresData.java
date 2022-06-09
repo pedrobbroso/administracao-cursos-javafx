@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.time.LocalDate;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -49,6 +50,8 @@ public class InstrutoresData extends Application {
     @Override
     public void start(Stage tela) throws Exception {
         //passa o Stage recebido para a variavel
+        
+        tela.getIcons().add(new Image("file:src/main/resources/images/cap.png"));
         //local da classe
         setStage(tela);
         

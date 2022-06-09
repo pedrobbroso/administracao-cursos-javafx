@@ -7,6 +7,7 @@ package br.com.fatec.Controller;
 import br.com.fatec.App;
 import br.com.fatec.InstrutoresData;
 import br.com.fatec.model.dao.InstrutoresDao;
+import br.com.fatec.model.dao.EstadoDao;
 import br.com.fatec.model.entities.Cursos;
 import br.com.fatec.model.entities.Estado;
 import br.com.fatec.model.entities.Instrutores;
@@ -29,7 +30,6 @@ import javafx.scene.control.ButtonType;
 import java.time.LocalDate;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 
 /**
@@ -43,8 +43,10 @@ public class InstrutoresListController implements Initializable {
     private InstrutoresDao dao;
     private ObservableList<Instrutores> observableList;
     private EstadosService estadosService;
+    private EstadoDao estadoDao;
     private ObservableList<Estado> estados;
     private Estado estadoSelect;
+    
     @FXML
     private Button btNew;
     @FXML
@@ -128,11 +130,11 @@ public class InstrutoresListController implements Initializable {
     
     private ObservableList<Estado> preencheEstados() {
         estados = FXCollections.observableArrayList();
-        estadosService = new EstadosService();
+        estadoDao = new EstadoDao();
         try {
             estadoSelect = new Estado(0, "Todos", "");
             estados.add(estadoSelect);
-            estados.addAll(estadosService.findAll());
+            estados.addAll(estadoDao.lista(""));
         } catch (Exception ex) {
             Alert alerta = new Alert(Alert.AlertType.ERROR,
                     "Erro Preenche Tabela: " + ex.getMessage(),

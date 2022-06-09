@@ -18,8 +18,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("mainView"));
-        stage.setScene(scene);
-        //stage.getIcons().add(new Image(this.getClass().getResource("resources/images/cap.png").getFile()));
+        stage.setScene(scene);       
+        stage.getIcons().add(new Image("file:src/main/resources/images/cap.png"));
         stage.setTitle("Cadastro de Cursos");
         stage.show();
     }

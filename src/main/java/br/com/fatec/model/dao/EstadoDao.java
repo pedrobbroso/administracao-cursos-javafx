@@ -4,7 +4,7 @@
  */
 package br.com.fatec.model.dao;
         
-import br.com.fatec.model.entities.Cursos;
+import br.com.fatec.model.entities.Estado;
 import br.com.fatec.model.persistencia.Banco;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,8 +15,8 @@ import java.util.Collection;
  * @author Rafael
  */
 
-public class CursosDao 
-        implements DAO<Cursos> {
+public class EstadoDao 
+        implements DAO<Estado> {
 
     //variaveis auxiliares
     //permite o uso de comandos DML (select, insert, delete e update) para
@@ -28,11 +28,11 @@ public class CursosDao
     private java.sql.ResultSet rs;
     
     //representar os dados do  meu negócio
-    private Cursos cursos; //meu MODEL   
+    private Estado estado; //meu MODEL   
     
     @Override
-    public boolean insere(Cursos obj) throws SQLException {
-        String sql = "INSERT INTO cursos (Nome, Categoria) " +
+    public boolean insere(Estado obj) throws SQLException {
+        String sql = "INSERT INTO estados (Estado, Uf) " +
                 " VALUES (?, ?)"; //a ? indica parametros
         
         //abre a conexao com o banco
@@ -40,9 +40,9 @@ public class CursosDao
         //preparar o comando PST
         pst = Banco.obterConexao().prepareStatement(sql);
         
-        //associar os dados do objeto Cursos com o comando INSERT
-        pst.setString(1, obj.getNome());
-        pst.setString(2, obj.getCategoria());
+        //associar os dados do objeto estados com o comando INSERT
+        pst.setString(1, obj.getEstado());
+        pst.setString(2, obj.getUf());
         
         //executar o comando
         int res = pst.executeUpdate(); //esse método serve para Insert, delete e update
@@ -56,15 +56,15 @@ public class CursosDao
     }
 
     @Override
-    public boolean remove(Cursos obj) throws SQLException {
-        String sql = "DELETE FROM cursos WHERE Id = ?"; //a ? indica parametros
+    public boolean remove(Estado obj) throws SQLException {
+        String sql = "DELETE FROM estados WHERE Id = ?"; //a ? indica parametros
         
         //abre a conexao com o banco
         Banco.conectar();
         //preparar o comando PST
         pst = Banco.obterConexao().prepareStatement(sql);
         
-        //associar os dados do objeto Cursos com o comando DELETE
+        //associar os dados do objeto estados com o comando DELETE
         pst.setInt(1, obj.getId());
         
         //executar o comando
@@ -78,8 +78,8 @@ public class CursosDao
     }
 
     @Override
-    public boolean altera(Cursos obj) throws SQLException {
-        String sql = "UPDATE cursos SET Nome = ?, Categoria = ? "
+    public boolean altera(Estado obj) throws SQLException {
+        String sql = "UPDATE cursos SET Estado = ?, Uf = ? "
                 + "WHERE Id = ?"; //a ? indica parametros
         
         //abre a conexao com o banco
@@ -87,10 +87,10 @@ public class CursosDao
         //preparar o comando PST
         pst = Banco.obterConexao().prepareStatement(sql);
         
-        //associar os dados do objeto Cursos com o comando UPDATE
+        //associar os dados do objeto estados com o comando UPDATE
         pst.setInt(3, obj.getId());
-        pst.setString(1, obj.getNome());
-        pst.setString(2, obj.getCategoria());
+        pst.setString(1, obj.getEstado());
+        pst.setString(2, obj.getUf());
         
         //executar o comando
         int res = pst.executeUpdate(); //esse método serve para Insert, delete e update
@@ -109,8 +109,8 @@ public class CursosDao
      * @throws SQLException 
      */
     @Override
-    public Cursos busca(Cursos obj) throws SQLException {
-        String sql = "SELECT * FROM cursos "
+    public Estado busca(Estado obj) throws SQLException {
+        String sql = "SELECT * FROM estados "
                 + "WHERE Nome LIKE %?%"; //a ? indica parametros
         
         //abre a conexao com o banco
@@ -118,8 +118,8 @@ public class CursosDao
         //preparar o comando PST
         pst = Banco.obterConexao().prepareStatement(sql);
         
-        //associar os dados do objeto Cursos com o comando UPDATE
-        pst.setString(1, obj.getNome());
+        //associar os dados do objeto estados com o comando UPDATE
+        pst.setString(1, obj.getEstado());
         
         //executar o comando
         rs = pst.executeQuery(); //esse método serve para SELECT
@@ -128,30 +128,30 @@ public class CursosDao
         //rs.next() faz a leitura do próximo registro, se existir devolve true
         //se nao devolve false
         if(rs.next()) {
-            //mover os dados(campos da tab) do resultSet para o objeto proprietário
-            cursos.setId(rs.getInt("Id"));
-            cursos.setNome(rs.getString("Nome"));
-            cursos.setCategoria(rs.getString("Categoria"));
+            //mover os dados(campos da tab) do resultSet para o objeto estados
+            estado.setId(rs.getInt("Id"));
+            estado.setEstado(rs.getString("Estado"));
+            estado.setUf(rs.getString("Uf"));
         }
         else {
             //não encontrou o registro solicitado
-            cursos = null;
+            estado = null;
         }
                 
         //fecha a conexao
         Banco.desconectar();
         
         //devolve o objeto proprietario
-        return cursos;
+        return estado;
 
     }
 
     @Override
-    public Collection<Cursos> lista(String criterio) throws SQLException {
+    public Collection<Estado> lista(String criterio) throws SQLException {
         //cria uma lista para armazenar os dados vindos do banco
-        ArrayList<Cursos> lista = new ArrayList<>();
+        ArrayList<Estado> lista = new ArrayList<>();
         
-        String sql = "SELECT * FROM cursos ";
+        String sql = "SELECT * FROM estados ";
 
         //precisa fazer filtro para listagem
         if(criterio != null && criterio.length() > 0) {
@@ -171,14 +171,14 @@ public class CursosDao
         //de um objeto e coloca o objeto dentro da coleção
         while(rs.next()) {
             //criar o objeto
-            cursos = new Cursos();
+            estado = new Estado();
             
-            //mover os dados do resultSet para o objeto proprietário
-            cursos.setId(rs.getInt("Id"));
-            cursos.setNome(rs.getString("Nome"));
-            cursos.setCategoria(rs.getString("Categoria"));
+            //mover os dados do resultSet para o objeto estados
+            estado.setId(rs.getInt("Id"));
+            estado.setEstado(rs.getString("Estado"));
+            estado.setUf(rs.getString("Uf"));
             //move o objeto para a coleção
-            lista.add(cursos);
+            lista.add(estado);
         }
                 
         //fecha a conexao

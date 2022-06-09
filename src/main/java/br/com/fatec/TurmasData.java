@@ -12,6 +12,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -43,6 +44,8 @@ public class TurmasData extends Application {
     @Override
     public void start(Stage tela) throws Exception {
         //passa o Stage recebido para a variavel
+        
+        tela.getIcons().add(new Image("file:src/main/resources/images/cap.png"));
         //local da classe
         setStage(tela);
         
