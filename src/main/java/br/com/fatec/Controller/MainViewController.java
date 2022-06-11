@@ -41,6 +41,14 @@ public class MainViewController implements Initializable {
 
     @FXML
     private MenuItem menuItemAbout;
+    
+    @FXML
+    private MenuItem menuItemLogout;
+    
+    public void onMenuItemLogoutAction() throws IOException {
+        App app = new App();
+        app.changeScene("login.fxml");
+    }
 
     public void onMenuItemCursoAction() {
         carregaView("CursosList", (CursosListController cursosListController) -> {

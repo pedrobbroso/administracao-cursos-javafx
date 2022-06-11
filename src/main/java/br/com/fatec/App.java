@@ -12,15 +12,19 @@ import java.io.IOException;
  * JavaFX App
  */
 public class App extends Application {
+    
+    private static Stage fakeStage;
 
     private static Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("mainView"));
+        fakeStage = stage;
+        scene = new Scene(loadFXML("login"));
+        //scene = new Scene(loadFXML("mainView"));
         stage.setScene(scene);       
         stage.getIcons().add(new Image("file:src/main/resources/images/cap.png"));
-        stage.setTitle("Cadastro de Cursos");
+        stage.setTitle("Tech Cursos");
         stage.show();
     }
 
@@ -31,6 +35,11 @@ public class App extends Application {
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
+    }
+    
+    public void changeScene(String fxml) throws IOException {
+        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+        fakeStage.getScene().setRoot(pane);
     }
     
     public static Scene getScene() {

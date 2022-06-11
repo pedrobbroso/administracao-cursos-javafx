@@ -7,7 +7,7 @@
 
 <VBox id="VBox" prefHeight="302.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label text="About">
+      <Label text="Sobre">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -15,10 +15,22 @@
             <Insets bottom="10.0" left="20.0" top="10.0" />
          </padding>
       </Label>
-      <Label prefHeight="17.0" prefWidth="54.0" text="Teste">
+      <Label prefHeight="17.0" prefWidth="269.0" text="Tech Cursos">
          <padding>
             <Insets left="20.0" />
          </padding>
+         <font>
+            <Font size="24.0" />
+         </font>
       </Label>
+      <Label prefHeight="27.0" prefWidth="265.0" text="Primeiros Passos:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label prefHeight="17.0" prefWidth="95.0" text="Realizar o login" />
+      <Label text="Cadastrar Curso" />
+      <Label text="Cadastrar Instrutor" />
+      <Label text="Cadastrar Turma" />
    </children>
 </VBox>
